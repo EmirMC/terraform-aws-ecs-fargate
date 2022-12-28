@@ -7,7 +7,7 @@ resource "aws_ecs_service" "main" {
   launch_type          = "FARGATE"
 
   network_configuration {
-    subnets          = var.subnet_private #
+    subnets          = var.ecs.subnets
     assign_public_ip = false
     security_groups  = var.ecs.security_groups
   }
@@ -15,7 +15,7 @@ resource "aws_ecs_service" "main" {
   load_balancer {
     target_group_arn = aws_lb_target_group.tg.arn
     container_name   = "${var.app_name}-container"
-    container_port   = var.container-port
+    container_port   = var.container_port
   }
   desired_count = 1
 
@@ -46,7 +46,7 @@ resource "aws_ecs_task_definition" "definition" {
       essential = true
       portMappings = [
         {
-          containerPort = var.container-port
+          containerPort = var.container_port
         }
       ]
       logConfiguration = {

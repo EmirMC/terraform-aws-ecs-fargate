@@ -25,18 +25,19 @@ variable "database" {
 
 variable "lb" {
   description = "Load balancer configuration"
-  type = {
+  type = object({
     subnets         = list(string)
     security_groups = list(string)
-  }
+  })
 }
 
 variable "ecs" {
   description = "ECS Cluster & Service configuration"
-  type = {
+  type = object({
     cluster         = string
     cluster_name    = string
     security_groups = list(string)
     task_role       = string
-  }
+    subnets         = list(string)
+  })
 }
