@@ -6,10 +6,11 @@ locals {
   instance_class       = var.instance-class != null ? var.instance-class : "db.t3.micro"
   parameter_group_name = var.parameter-group-name != null ? var.parameter-group-name : "default.postgres14"
   port                 = var.port != null ? var.port : 5432
+  create               = var.db-name != "" && var.username != "" && var.password != "" && var.db-subnet-group-name != ""
 }
 
 resource "aws_db_instance" "default" {
-  count                  = var.create ? 1 : 0
+  count                  = local.create ? 1 : 0
   allocated_storage      = local.allocated_storage
   storage_type           = local.storage_type
   engine                 = local.engine

@@ -1,8 +1,3 @@
-variable "create" {
-  type    = bool
-  default = false
-}
-
 variable "apply-immediately" {
   default = false
   type    = bool

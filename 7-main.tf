@@ -1,6 +1,5 @@
 module "db" {
   source = "./database"
-  create = var.database.db_name != null && var.database.db_password != null && var.database.db_username != null && var.database.subnet_group_name != null
 
   # required variables
   db-name                = try(var.database.db_name, "")
