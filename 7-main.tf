@@ -9,7 +9,7 @@ module "db" {
   vpc-security-group-ids = try(var.database.vpc_security_group_ids, [])
 
   identifier           = try(var.database.identifier, "${var.app_name}-db")
-  publicly-accessible  = try(var.database.public_accessible, false)
+  publicly-accessible  = try(var.database.publicly_accessible, false)
   apply-immediately    = try(var.database.apply_immediately, null)
   port                 = try(var.database.port, null)
   instance-class       = try(var.database.instance_class, null)
