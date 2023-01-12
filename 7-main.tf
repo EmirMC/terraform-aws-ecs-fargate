@@ -18,5 +18,5 @@ module "db" {
   engine-version       = try(var.database.engine_version, null)
   allocated-storage    = try(var.database.allocated_storage, null)
   storage-type         = try(var.database.storage_type, null)
-  skip-final-snapshot  = try(var.database.skip_final_snapshot, null)
+  skip-final-snapshot  = try(var.database.skip_final_snapshot, true)
 }
